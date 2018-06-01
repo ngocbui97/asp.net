@@ -100,25 +100,25 @@ namespace aspJaneto.Controllers
             return Ok(listSV);
         }
 
-        [HttpGet]
-        public IHttpActionResult GetById(int id)
-        {
-            IHttpActionResult httpActionResult;
-            var gv = db.TTGVs.FirstOrDefault(x => x.Id == id);
+        //[HttpGet]
+        //public IHttpActionResult GetById(int id)
+        //{
+        //    IHttpActionResult httpActionResult;
+        //    var gv = db.TTGVs.FirstOrDefault(x => x.Id == id);
 
-            if (gv == null)
-            {
-                ErrorModel errors = new ErrorModel();
-                errors.Add("Không tìm thấy lớp");
+        //    if (gv == null)
+        //    {
+        //        ErrorModel errors = new ErrorModel();
+        //        errors.Add("Không tìm thấy lớp");
 
-                httpActionResult = Ok(errors);
-            }
-            else
-            {
-                httpActionResult = Ok(new GiaoVien_model(gv));
-            }
+        //        httpActionResult = Ok(errors);
+        //    }
+        //    else
+        //    {
+        //        httpActionResult = Ok(new GiaoVien_model(gv));
+        //    }
 
-            return httpActionResult;
-        }
+        //    return httpActionResult;
+        //}
     }
 }

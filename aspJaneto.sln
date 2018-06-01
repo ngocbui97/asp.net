@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2043
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aspJaneto", "aspJaneto\aspJaneto.csproj", "{8DA1475C-6ECC-45E9-8DDA-0D8ED6F65E45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "apiModel", "apiModel\apiModel.csproj", "{21642712-7ABA-4718-A583-445F70E3415A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8DA1475C-6ECC-45E9-8DDA-0D8ED6F65E45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DA1475C-6ECC-45E9-8DDA-0D8ED6F65E45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DA1475C-6ECC-45E9-8DDA-0D8ED6F65E45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DA1475C-6ECC-45E9-8DDA-0D8ED6F65E45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21642712-7ABA-4718-A583-445F70E3415A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21642712-7ABA-4718-A583-445F70E3415A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21642712-7ABA-4718-A583-445F70E3415A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21642712-7ABA-4718-A583-445F70E3415A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8FF5911A-AE89-48F1-B808-2926FA26FC31}
+	EndGlobalSection
+EndGlobal

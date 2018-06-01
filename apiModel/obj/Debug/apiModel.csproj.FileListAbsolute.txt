@@ -1,0 +1,11 @@
+C:\Users\ngoc\source\repos\aspJaneto\apiModel\bin\Debug\apiModel.dll.config
+C:\Users\ngoc\source\repos\aspJaneto\apiModel\bin\Debug\apiModel.dll
+C:\Users\ngoc\source\repos\aspJaneto\apiModel\bin\Debug\apiModel.pdb
+C:\Users\ngoc\source\repos\aspJaneto\apiModel\bin\Debug\EntityFramework.dll
+C:\Users\ngoc\source\repos\aspJaneto\apiModel\bin\Debug\System.Data.Entity.Repository.dll
+C:\Users\ngoc\source\repos\aspJaneto\apiModel\bin\Debug\EntityFramework.xml
+C:\Users\ngoc\source\repos\aspJaneto\apiModel\obj\Debug\apiModel.csprojResolveAssemblyReference.cache
+C:\Users\ngoc\source\repos\aspJaneto\apiModel\obj\Debug\apiModel.csproj.CoreCompileInputs.cache
+C:\Users\ngoc\source\repos\aspJaneto\apiModel\obj\Debug\apiModel.csproj.CopyComplete
+C:\Users\ngoc\source\repos\aspJaneto\apiModel\obj\Debug\apiModel.dll
+C:\Users\ngoc\source\repos\aspJaneto\apiModel\obj\Debug\apiModel.pdb

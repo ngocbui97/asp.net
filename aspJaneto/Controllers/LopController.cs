@@ -17,6 +17,13 @@ namespace aspJaneto.Controllers
         {
             this.db = new ApiDbcontext();
         }
+        
+        /// <summary>
+        //
+        /// </summary>
+        /// <param name="tl"></param>
+        /// <returns></returns>
+         
         //create lop
         [HttpPost]
         public IHttpActionResult TaoLop(TaoLop tl)
@@ -34,8 +41,8 @@ namespace aspJaneto.Controllers
                 TTLOP lop = new TTLOP();
                 lop.MaLop = tl.MaLop;
                 lop.TenLop = tl.TenLop;
-                lop.Nganh = tl.Nganh;
-                lop.gvcn = tl.GVCN;
+                //lop.gvcnId = tl.gvcnId;
+                //lop.gvdayId = tl.gvdayId;
                 lop = db.TTLOPs.Add(lop);
 
                 this.db.SaveChanges();
@@ -69,9 +76,9 @@ namespace aspJaneto.Controllers
             else
             {
                 lop.MaLop = model.MaLop ?? model.MaLop;
-                lop.Nganh = model.Nganh ?? model.Nganh;
+                //lop.gvdayId = model.gvdayId;
                 lop.TenLop = model.TenLop ?? model.TenLop;      
-                lop.gvcn = model.GVCN ?? model.GVCN;
+                //lop.gvcnId = model.gvcnId ;
                 this.db.Entry(lop).State = System.Data.Entity.EntityState.Modified;
 
                 this.db.SaveChanges();
@@ -88,36 +95,75 @@ namespace aspJaneto.Controllers
             var listLops = this.db.TTLOPs.Select(x => new Lop_model()
             {
                 MaLop = x.MaLop,
-                Nganh = x.Nganh,
                 Id = x.Id,
                 TenLop = x.TenLop,
-                GVCN = x.gvcn
+              // gvcnId=x.gvcnId
              
             });
 
             return Ok(listLops);
         }
 
-        //[HttpGet]
-        //public IHttpActionResult GetById(int id)
-        //{
-        //    IHttpActionResult httpActionResult;
-        //    var lop = db.TTLOPs.FirstOrDefault(x => x.Id == id);
+        [HttpGet]
+        public IHttpActionResult GetById(long id)
+        {
+            IHttpActionResult httpActionResult;
+            var lop = db.TTLOPs.FirstOrDefault(x => x.Id == id);
 
-        //    if (lop == null)
-        //    {
-        //        ErrorModel errors = new ErrorModel();
-        //        errors.Add("Không tìm thấy lớp");
+            if (lop == null)
+            {
+                ErrorModel errors = new ErrorModel();
+                errors.Add("Không tìm thấy lớp");
 
-        //        httpActionResult = Ok(errors);
-        //    }
-        //    else
-        //    {
-        //        httpActionResult = Ok(new Lop_model(lop));
-        //    }
+                httpActionResult = Ok(errors);
+            }
+            else
+            {
+                httpActionResult = Ok(new Lop_model(lop));
+            }
 
-        //    return httpActionResult;
-        //}
+            return httpActionResult;
+        }
+
+
+        /**
+           * @api [Post] /Lop/TenLop Tao mot lop moi
+         * @apiGroup Lop
+         * @apiPermission none
+         * 
+         * @apiParam {string} MaLop Ma cua lop moi 
+         * @apiParam {string} TenLop Ten cua lop moi
+         * 
+         * @apiParamExample {json} Request-Example:
+         * {
+         *      MaLop: '001',
+         *      TenLop: 'Cong nghe thong tin 01'
+         * }
+         * 
+         * @apiSuccess {string} MaLop Ma cua lop moi vua tao
+         * @apiSuccess {string} TenLop Ten cua lop moi vua tao
+         * @apiSuccess {long} Id  Iid cua lop moi vua tao
+         * 
+         * @apiSuccessExample {json} Response:
+         * {
+         *      Id: 1,
+         *      MaLop: '001'
+         *      TenLop: 'Cong nghe thong tin 01'
+         * }
+         * 
+         * 
+         * @apiError (400) {string[]} Errors Mang cac loi
+         * 
+         * @apiErrorExample: {json}
+         * {
+         *      "Errors": [
+         *          "Ma lop la truong bat buoc",
+         *          "Ten lop la truong bat buoc"
+         *      ]
+         * } 
+         * 
+         * 
+        */
     }
 
 }

@@ -8,12 +8,13 @@ namespace aspJaneto.ViewModels
 {
     public class SinhVien_model
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string MaSv { get; set; }
         public string HoTen { get; set; }
         public DateTime NgaySinh { get; set; }
-        
-       
+
+        public virtual TTLOP lop { get; set; }
+
 
 
         public SinhVien_model()
@@ -33,14 +34,14 @@ namespace aspJaneto.ViewModels
             public string MaSv { get; set; }
             public string HoTen { get; set; }
             public DateTime NgaySinh { get; set; }
-            
-            
+
+            public virtual TTLOP lop { get; set; }
 
 
         }
         public class CapNhatSinhVien : TaoSinhVien
         {
-            public int Id { get; set; }
+            public long Id { get; set; }
         }
     }
 }

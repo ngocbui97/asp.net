@@ -8,12 +8,12 @@ namespace aspJaneto.ViewModels
 {
     public class GiaoVien_model
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string MaGv { get; set; }
         public string HoTen { get; set; }
         public DateTime NgaySinh { get; set; }
         public string Khoa { get; set; }
-
+        public virtual TTLOP lop { get; set; }
         public GiaoVien_model()
         {
 
@@ -32,12 +32,12 @@ namespace aspJaneto.ViewModels
             public string HoTen { get; set; }
             public DateTime NgaySinh { get; set; }
             public string Khoa { get; set; }
+            public virtual TTLOP lop { get; set; }
 
-           
         }
         public class CapNhatGiaoVien : TaoGiaoVien
         {
-            public int Id { get; set; }
+            public long Id { get; set; }
         }
     }
 }

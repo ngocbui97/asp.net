@@ -19,7 +19,7 @@ namespace aspJaneto.Controllers
         }
         //create lop
         [HttpPost]
-        public IHttpActionResult TaoLop(TaoGiaoVien model)
+        public IHttpActionResult TaoGV(TaoGiaoVien model)
         {
             IHttpActionResult httpActionResult;
             ErrorModel errors = new ErrorModel();
@@ -36,6 +36,7 @@ namespace aspJaneto.Controllers
                 gv.HoTen = model.HoTen;
                 gv.NgaySinh = model.NgaySinh;
                 gv.Khoa = model.Khoa;
+                gv.lop = model.lop;
                 gv = db.TTGVs.Add(gv);
 
                 this.db.SaveChanges();
@@ -53,7 +54,7 @@ namespace aspJaneto.Controllers
         }
 
         [HttpPut]
-        public IHttpActionResult CapNhatLop(CapNhatGiaoVien model)
+        public IHttpActionResult CapNhatGV(CapNhatGiaoVien model)
         {
             IHttpActionResult httpActionResult;
             ErrorModel errors = new ErrorModel();
@@ -72,7 +73,7 @@ namespace aspJaneto.Controllers
                 gv.NgaySinh = model.NgaySinh;
                 gv.HoTen = model.HoTen ?? model.HoTen;
                 gv.Khoa = model.Khoa??model.Khoa;
-
+                gv.lop = model.lop ?? model.lop;
                 this.db.Entry(gv).State = System.Data.Entity.EntityState.Modified;
 
                 this.db.SaveChanges();
@@ -93,32 +94,32 @@ namespace aspJaneto.Controllers
                 NgaySinh = x.NgaySinh,
                 Khoa = x.Khoa,
                 MaGv=x.MaGv
-
+               
 
             });
 
             return Ok(listSV);
         }
 
-        //[HttpGet]
-        //public IHttpActionResult GetById(int id)
-        //{
-        //    IHttpActionResult httpActionResult;
-        //    var gv = db.TTGVs.FirstOrDefault(x => x.Id == id);
+        [HttpGet]
+        public IHttpActionResult GetById(long id)
+        {
+            IHttpActionResult httpActionResult;
+            var gv = db.TTGVs.FirstOrDefault(x => x.Id == id);
 
-        //    if (gv == null)
-        //    {
-        //        ErrorModel errors = new ErrorModel();
-        //        errors.Add("Không tìm thấy lớp");
+            if (gv == null)
+            {
+                ErrorModel errors = new ErrorModel();
+                errors.Add("Không tìm thấy lớp");
 
-        //        httpActionResult = Ok(errors);
-        //    }
-        //    else
-        //    {
-        //        httpActionResult = Ok(new GiaoVien_model(gv));
-        //    }
+                httpActionResult = Ok(errors);
+            }
+            else
+            {
+                httpActionResult = Ok(new GiaoVien_model(gv));
+            }
 
-        //    return httpActionResult;
-        //}
+            return httpActionResult;
+        }
     }
 }

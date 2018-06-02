@@ -19,7 +19,7 @@ namespace aspJaneto.Controllers
         }
         //create lop
         [HttpPost]
-        public IHttpActionResult TaoLop(TaoSinhVien model)
+        public IHttpActionResult TaoSV(TaoSinhVien model)
         {
             IHttpActionResult httpActionResult;
             ErrorModel errors = new ErrorModel();
@@ -35,6 +35,7 @@ namespace aspJaneto.Controllers
                 sv.MaSv = model.MaSv;
                 sv.HoTen = model.HoTen;
                 sv.NgaySinh = model.NgaySinh;
+                sv.lop = model.lop;
                 sv = db.TTSVs.Add(sv);
 
                 this.db.SaveChanges();
@@ -52,7 +53,7 @@ namespace aspJaneto.Controllers
         }
 
         [HttpPut]
-        public IHttpActionResult CapNhatLop(CapNhatSinhVien model)
+        public IHttpActionResult CapNhatSV(CapNhatSinhVien model)
         {
             IHttpActionResult httpActionResult;
             ErrorModel errors = new ErrorModel();
@@ -70,7 +71,7 @@ namespace aspJaneto.Controllers
                 sv.MaSv = model.MaSv ?? model.MaSv;
                 sv.NgaySinh = model.NgaySinh;
                 sv.HoTen = model.HoTen ?? model.HoTen;
-                
+                sv.lop = model.lop;
                 this.db.Entry(sv).State = System.Data.Entity.EntityState.Modified;
 
                 this.db.SaveChanges();
@@ -89,7 +90,8 @@ namespace aspJaneto.Controllers
                 Id = x.Id,
                 HoTen = x.HoTen,
                 NgaySinh = x.NgaySinh,
-                
+                MaSv=x.MaSv,
+                lop=x.lop
 
 
             });
@@ -97,25 +99,25 @@ namespace aspJaneto.Controllers
             return Ok(listLops);
         }
 
-        //[HttpGet]
-        //public IHttpActionResult GetById(int id)
-        //{
-        //    IHttpActionResult httpActionResult;
-        //    var sv = db.TTSVs.FirstOrDefault(x => x.Id == id);
+        [HttpGet]
+        public IHttpActionResult GetById(long id)
+        {
+            IHttpActionResult httpActionResult;
+            var sv = db.TTSVs.FirstOrDefault(x => x.Id == id);
 
-        //    if (sv == null)
-        //    {
-        //        ErrorModel errors = new ErrorModel();
-        //        errors.Add("Không tìm thấy lớp");
+            if (sv == null)
+            {
+                ErrorModel errors = new ErrorModel();
+                errors.Add("Không tìm thấy lớp");
 
-        //        httpActionResult = Ok(errors);
-        //    }
-        //    else
-        //    {
-        //        httpActionResult = Ok(new SinhVien_model(sv));
-        //    }
+                httpActionResult = Ok(errors);
+            }
+            else
+            {
+                httpActionResult = Ok(new SinhVien_model(sv));
+            }
 
-        //    return httpActionResult;
-        //}
+            return httpActionResult;
+        }
     }
 }

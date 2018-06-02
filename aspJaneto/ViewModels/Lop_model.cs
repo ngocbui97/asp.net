@@ -8,19 +8,19 @@ namespace aspJaneto.ViewModels
 {
     public class Lop_model
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         public string MaLop { get; set; }
         
         public string TenLop { get; set; }
-        public string Nganh { get; set; }
+       
         // public int svIds  { get; set; }
         
-        public TTGV GVCN { get; set; }
+        public long gvdayId { get; set; }
         //   public int gvIds  { get; set; }
 
         // public int gvcn { get; set; }
-
+        public long gvcnId { get; set; }
         public Lop_model()
         {
 
@@ -29,22 +29,22 @@ namespace aspJaneto.ViewModels
         {
             this.MaLop = ttlop.MaLop;
             this.TenLop = ttlop.TenLop;
-            this.Nganh = ttlop.Nganh;
+            this.gvdayId = ttlop.gvday.Id;
            
-            this.GVCN = ttlop.gvcn;
+            this.gvcnId = ttlop.gvcn.Id;
         }
         public class TaoLop
          {
             public string MaLop { get; set; } 
             public string TenLop { get; set; }
-            public string Nganh { get; set; }
-           
+
+            public long gvdayId { get; set; }
             
-            public TTGV GVCN { get; set; }
+            public long gvcnId { get; set; }
         }
         public class CapNhatLop:TaoLop
         {
-            public int Id { get; set; }
+            public long Id { get; set; }
         }
     }
 }

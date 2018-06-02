@@ -99,25 +99,25 @@ namespace aspJaneto.Controllers
             return Ok(listLops);
         }
 
-        [HttpGet]
-        public IHttpActionResult GetById(long id)
-        {
-            IHttpActionResult httpActionResult;
-            var sv = db.TTSVs.FirstOrDefault(x => x.Id == id);
+        //[HttpGet]
+        //public IHttpActionResult GetById(long id)
+        //{
+        //    IHttpActionResult httpActionResult;
+        //    var sv = db.TTSVs.FirstOrDefault(x => x.Id == id);
 
-            if (sv == null)
-            {
-                ErrorModel errors = new ErrorModel();
-                errors.Add("Không tìm thấy lớp");
+        //    if (sv == null)
+        //    {
+        //        ErrorModel errors = new ErrorModel();
+        //        errors.Add("Không tìm thấy lớp");
 
-                httpActionResult = Ok(errors);
-            }
-            else
-            {
-                httpActionResult = Ok(new SinhVien_model(sv));
-            }
+        //        httpActionResult = Ok(errors);
+        //    }
+        //    else
+        //    {
+        //        httpActionResult = Ok(new SinhVien_model(sv));
+        //    }
 
-            return httpActionResult;
-        }
+        //    return httpActionResult;
+        //}
     }
 }

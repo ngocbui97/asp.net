@@ -9,3 +9,14 @@ C:\Users\ngoc\source\repos\aspJaneto\apiModel\obj\Debug\apiModel.csproj.CoreComp
 C:\Users\ngoc\source\repos\aspJaneto\apiModel\obj\Debug\apiModel.csproj.CopyComplete
 C:\Users\ngoc\source\repos\aspJaneto\apiModel\obj\Debug\apiModel.dll
 C:\Users\ngoc\source\repos\aspJaneto\apiModel\obj\Debug\apiModel.pdb
+C:\Users\ngoc\Desktop\JNT\git\apiModel\bin\Debug\apiModel.dll.config
+C:\Users\ngoc\Desktop\JNT\git\apiModel\bin\Debug\apiModel.dll
+C:\Users\ngoc\Desktop\JNT\git\apiModel\bin\Debug\apiModel.pdb
+C:\Users\ngoc\Desktop\JNT\git\apiModel\bin\Debug\EntityFramework.dll
+C:\Users\ngoc\Desktop\JNT\git\apiModel\bin\Debug\System.Data.Entity.Repository.dll
+C:\Users\ngoc\Desktop\JNT\git\apiModel\bin\Debug\EntityFramework.xml
+C:\Users\ngoc\Desktop\JNT\git\apiModel\obj\Debug\apiModel.csprojResolveAssemblyReference.cache
+C:\Users\ngoc\Desktop\JNT\git\apiModel\obj\Debug\apiModel.csproj.CoreCompileInputs.cache
+C:\Users\ngoc\Desktop\JNT\git\apiModel\obj\Debug\apiModel.csproj.CopyComplete
+C:\Users\ngoc\Desktop\JNT\git\apiModel\obj\Debug\apiModel.dll
+C:\Users\ngoc\Desktop\JNT\git\apiModel\obj\Debug\apiModel.pdb

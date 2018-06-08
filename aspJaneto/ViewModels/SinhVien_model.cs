@@ -8,12 +8,12 @@ namespace aspJaneto.ViewModels
 {
     public class SinhVien_model
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
         public string MaSv { get; set; }
         public string HoTen { get; set; }
         public DateTime NgaySinh { get; set; }
 
-        public virtual TTLOP lop { get; set; }
+        public int LopId { get; set; }
 
 
 
@@ -23,10 +23,11 @@ namespace aspJaneto.ViewModels
         }
         public SinhVien_model(TTSV ttsv)
         {
+            this.Id = ttsv.Id;
             this.MaSv = ttsv.MaSv;
             this.HoTen = ttsv.HoTen;
             this.NgaySinh = ttsv.NgaySinh;
-            
+            this.LopId = ttsv.lop.Id;
             
         }
         public class TaoSinhVien
@@ -35,13 +36,14 @@ namespace aspJaneto.ViewModels
             public string HoTen { get; set; }
             public DateTime NgaySinh { get; set; }
 
-            public virtual TTLOP lop { get; set; }
+            public int LopId { get; set; }
 
 
         }
         public class CapNhatSinhVien : TaoSinhVien
         {
-            public long Id { get; set; }
+            public int Id { get; set; }
         }
+        public class XoaSinhVien : CapNhatSinhVien { }
     }
 }

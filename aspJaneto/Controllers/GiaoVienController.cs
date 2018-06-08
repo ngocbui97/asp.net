@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using apiModel;
+using aspJaneto.Infrastructure;
 using aspJaneto.ViewModels;
 using static aspJaneto.ViewModels.GiaoVien_model;
 
@@ -35,8 +36,7 @@ namespace aspJaneto.Controllers
                 gv.MaGv = model.MaGv;
                 gv.HoTen = model.HoTen;
                 gv.NgaySinh = model.NgaySinh;
-                gv.Khoa = model.Khoa;
-                gv.lop = model.lop;
+               
                 gv = db.TTGVs.Add(gv);
 
                 this.db.SaveChanges();
@@ -47,7 +47,7 @@ namespace aspJaneto.Controllers
             }
             else
             {
-                httpActionResult = Ok(errors);
+                httpActionResult = new ErrorActionResult(Request, System.Net.HttpStatusCode.BadRequest, errors);
             }
 
             return httpActionResult;
@@ -65,15 +65,14 @@ namespace aspJaneto.Controllers
             {
                 errors.Add("Không tìm thấy lớp");
 
-                httpActionResult = Ok(errors);
+                httpActionResult = new ErrorActionResult(Request, System.Net.HttpStatusCode.NotFound, errors);
             }
             else
             {
                 gv.MaGv = model.MaGv ?? model.MaGv;
                 gv.NgaySinh = model.NgaySinh;
                 gv.HoTen = model.HoTen ?? model.HoTen;
-                gv.Khoa = model.Khoa??model.Khoa;
-                gv.lop = model.lop ?? model.lop;
+              
                 this.db.Entry(gv).State = System.Data.Entity.EntityState.Modified;
 
                 this.db.SaveChanges();
@@ -91,8 +90,7 @@ namespace aspJaneto.Controllers
             {
                 Id = x.Id,
                 HoTen = x.HoTen,
-                NgaySinh = x.NgaySinh,
-                Khoa = x.Khoa,
+                NgaySinh = x.NgaySinh, 
                 MaGv=x.MaGv
                
 
@@ -101,25 +99,45 @@ namespace aspJaneto.Controllers
             return Ok(listSV);
         }
 
-        //[HttpGet]
-        //public IHttpActionResult GetById(long id)
-        //{
-        //    IHttpActionResult httpActionResult;
-        //    var gv = db.TTGVs.FirstOrDefault(x => x.Id == id);
+        [HttpGet]
+        public IHttpActionResult GetById(int id)
+        {
+            IHttpActionResult httpActionResult;
+            var gv = db.TTGVs.FirstOrDefault(x => x.Id == id);
 
-        //    if (gv == null)
-        //    {
-        //        ErrorModel errors = new ErrorModel();
-        //        errors.Add("Không tìm thấy lớp");
+            if (gv == null)
+            {
+                ErrorModel errors = new ErrorModel();
+                errors.Add("Không tìm thấy lớp");
 
-        //        httpActionResult = Ok(errors);
-        //    }
-        //    else
-        //    {
-        //        httpActionResult = Ok(new GiaoVien_model(gv));
-        //    }
+                // httpActionResult = Ok(errors);
+                httpActionResult = new ErrorActionResult(Request, System.Net.HttpStatusCode.NotFound, errors);
+            }
+            else
+            {
+                httpActionResult = Ok(new GiaoVien_model(gv));
+            }
 
-        //    return httpActionResult;
-        //}
+            return httpActionResult; 
+        }
+        [HttpDelete]
+        public IHttpActionResult DeleteTeacher(int Id)
+        {
+            IHttpActionResult httpActionResult;
+            ErrorModel errors = new ErrorModel();
+            var tc = db.TTGVs.FirstOrDefault(x => x.Id == Id);
+            if (tc == null)
+            {
+                errors.Add("Mã giáo viên không tồn tại!");
+                httpActionResult = new ErrorActionResult(Request, System.Net.HttpStatusCode.NotFound, errors);
+            }
+            else
+            {
+                this.db.TTGVs.Remove(tc);
+                this.db.SaveChanges();
+                httpActionResult = Ok("Đã xóa giáo viên " + tc.Id);
+            }
+            return httpActionResult;
+        }
     }
 }
